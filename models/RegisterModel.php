@@ -8,6 +8,10 @@ class RegisterModel extends Model{
     public string $email;
     public string $password;
     public string $confpass;
+
+    public function register(){
+        echo "Registering user...";
+    }
 }
 
 ?>
