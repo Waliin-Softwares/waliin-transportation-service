@@ -1,0 +1,19 @@
+{
+    "name": "jonny/php_mvc",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "JONNY-ME",
+            "email": "yohannesmelese4@gmail.com"
+        }
+    ],
+
+
+    "require": {}
+
+    
+}
