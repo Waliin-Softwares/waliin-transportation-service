@@ -1,40 +1,32 @@
+<?php 
+    use app\core\form\Form;
+?>
+
+
 <DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Register</title>
 </head>
 
 
 <body>
-    <h2> Register </h2>
-    <div  class="contaner">
-        <div style="background-color:gray">
-            <div style="padding-left:30%">
-                <form action="/register" method="post" >
-                    <label for="name">Name: </label>
-                    <div style="padding-left:0%">
-                        <input type="text" name="name" id="name" size="25">
-                    </div>
-                    <br>
-                    <label for="email">Email: </label>
-                    <div style="padding-left:0%">
-                        <input type="text" name="email" id="email" size="25">
-                    </div>
-                    <br>
-                    <label for="password">Password: </label>
-                    <div style="padding-left:0%">   
-                        <input type="password" name="password" id="password" size="25">
-                    </div>
-                    <br>
-                    <label for="confpass"> Confirm Password: </label>
-                    <div style="padding-left:0%">
-                        <input type="password" name="confpass" id="confpass" size="25">
-                    </div>
-                    <br>
-                    <input type="submit" id="submit" value="Register">
-                </form>
+    <div class="container">
+        <h2> Register </h2>
+        <div class="row">
+            <div class="col">
+                <?php $form = Form::begin('/register', 'post'); ?>
+                    <?php echo $form->field($model, 'name'); ?>
+                    <?php echo $form->field($model, 'email'); ?>
+                    <?php echo $form->field($model, 'password'); ?>
+                    <?php echo $form->field($model, 'confpass'); ?>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <?php Form::end(); ?>
             </div>
         </div>
     </div>
