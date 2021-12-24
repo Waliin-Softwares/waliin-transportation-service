@@ -18,10 +18,19 @@ class AuthController extends Controller{
         $registerModel = new RegisterModel();
         if($request->isPost()){
             $registerModel->loadData($request->getBody());
+            
+
+
             if($registerModel->validate() && $registerModel->register()){
                 return "Success";
             }
             else{
+
+                echo '<pre>';
+                var_dump($registerModel->errors);
+                echo '</pre>';
+                exit;
+
                 return $this->render("register", [
                     'model' => $registerModel
                 ]);
