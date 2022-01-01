@@ -3,14 +3,14 @@
 namespace app\models;
 use app\core\Model;
 
-class RegisterModel extends Model{
+class RegisterModel extends DbModel{
     public string $name="";
     public string $email="";
     public string $password="";
     public string $confpass="";
 
     public function register(){
-        echo "Registering user...";
+        return $this->save();
     }
     public function rules(){
         
@@ -21,6 +21,14 @@ class RegisterModel extends Model{
             'confpass' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']],
         ];
     }
+    public function tableName(){
+        return "users";
+    }
+    public function attributes(){
+        return ['name', 'email', 'password'];
+    }
+
+
 }
 
 ?>
