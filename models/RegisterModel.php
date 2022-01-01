@@ -1,7 +1,7 @@
 <?php 
 
 namespace app\models;
-use app\core\Model;
+use app\core\DbModel;
 
 class RegisterModel extends DbModel{
     public string $name="";
@@ -10,13 +10,14 @@ class RegisterModel extends DbModel{
     public string $confpass="";
 
     public function register(){
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         return $this->save();
     }
     public function rules(){
         
         return [
             'name' => [self::RULE_REQUIRED],
-            'email' => [self::RULE_REQUIRED, self::RULE_EMAIL],
+            'email' => [self::RULE_REQUIRED, self::RULE_EMAIL, self::RULE_UNIQUE],
             'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 6], [self::RULE_MAX, 'max' => 20]],
             'confpass' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']],
         ];

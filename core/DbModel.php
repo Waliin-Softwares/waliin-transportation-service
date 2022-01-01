@@ -7,9 +7,15 @@ abstract class DbModel extends Model{
     public function save(){
         $tableName = $this->tableName();
         $attributes = $this->attributes();
-        $params = [];
-        $statement = self::prepare("INSERT INTO $tableName (".emplode(',', $attributes).
-        ") VALUES (:".implode(',:', $params).")");
+        $statement = self::prepare("INSERT INTO $tableName (".implode(',', $attributes).
+        ") VALUES (:".implode(',:', $attributes).")");
+        
+        foreach($attributes as $attribute){
+            $statement->bindValue(":$attribute", $this->{$attribute});
+        }
+        
+        $statement->execute();
+        return true;
         
     }
     public static function prepare($sql){

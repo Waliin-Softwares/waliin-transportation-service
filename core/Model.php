@@ -47,7 +47,9 @@ abstract class Model{
                 if($ruleName === self::RULE_MATCH && $value !== $this->{$rule["match"]}){
                     $this->addError($attribute, $ruleName, $rule);
                 }
-
+                if($ruleName === self::RULE_UNIQUE && $this->findBy($attribute, $value)){
+                    $this->addError($attribute, $ruleName, $rule);
+                }
             }
         }
         return empty($this->errors);
@@ -78,6 +80,15 @@ abstract class Model{
     }
     public function hasError($attribute){
         return $this->errors[$attribute] ?? false;
+    }
+    public function findBy($attribute, $value){
+        $tableName = $this->tableName();
+        $statement = Application::$app->db->prepare("SELECT * FROM $tableName WHERE $attribute = :$attribute");
+        $statement->bindValue(":$attribute", $value);
+        $statement->execute();
+        $val = $statement->fetch();
+        return $val;
+        
     }
 }
 ?>
