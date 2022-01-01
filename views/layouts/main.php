@@ -10,15 +10,18 @@
     <title>Page</title>
 </head>
 
-<body style="background-color:grey  ">
-    <nav style="background: rgb(34, 34, 34);border-radius: 20;border-top-left-radius: 20;border-top-right-radius: 20;border-bottom-right-radius: 20;border-bottom-left-radius: 20;border-style: none;padding-top: 0;padding-bottom: 10px;">
-        <div class="container">
-            <div  id="navcol-1" style="color: rgb(255,255,255); border-top-color: #ddd;">
-                    <li class="nav-item"><a class="nav-link active" href="/" style="color: rgba(224,217,217,0.9);">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact" style="color: rgba(224,217,217,0.9);">Contact </a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login" style="color: rgba(224,217,217,0.9);">Login </a></li>
-                    <li class="nav-item"><a class="nav-link" href="/register" style="color: rgba(224,217,217,0.9);">Register </a></li>
+<body style="background-color:grey">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">MVC</a>
             </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
         </div>
     </nav>
 

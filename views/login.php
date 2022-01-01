@@ -15,23 +15,17 @@
 
 <body>
     <h2> Login </h2>
-    <div class="contaner">
-        <div style="background-color:gray">
-            <div style="padding-left:30%">
-                <form action="/login" method="post" >
-                    <label for="email">Email: </label>
-                    <div style="padding-left:0%">
-                        <input type="text" name="email" id="email" size="25">
-                    </div>
-                    <br>
-                    <label for="password">Password: </label>
-                    <div style="padding-left:0%">
-                        <input type="password" name="password" id="password" size="25">
-                    </div>
-                    <br>
-                    <input type="submit" id="submit" value="Login">
-                </form>
+    <div class="container">
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
             </div>
-        </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
     </div>
 </body>

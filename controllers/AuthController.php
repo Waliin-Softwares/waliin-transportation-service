@@ -24,8 +24,6 @@ class AuthController extends Controller{
                 return "Success";
             }
             else{
-
-
                 return $this->render("register", [
                     'model' => $registerModel
                 ]);
