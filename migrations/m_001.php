@@ -1,23 +1,28 @@
 <?php 
 
+use app\core\Application;
 class m_001{
         
         public function up(){
-            $sql = "CREATE TABLE IF NOT EXISTS `users` (
-                `id` int(11) NOT NULL AUTO_INCREMENT,
+            $db = Application::$app->db;
+            $SQL =  "CREATE TABLE `users` (
+                `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 `name` varchar(255) NOT NULL,
                 `email` varchar(255) NOT NULL,
                 `password` varchar(255) NOT NULL,
-                `created_at` datetime NOT NULL,
-                `updated_at` datetime NOT NULL,
-                PRIMARY KEY (`id`)
+                `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-            DB::query($sql);
+            $db->pdo->exec($SQL);
+            echo "migration 001 is applied" . PHP_EOL;
         }
         
         public function down(){
-            $sql = "DROP TABLE `users`";
-            DB::query($sql);
+            $db = Application::$app->db;
+            $SQL = "DROP TABLE `users`";
+            $db->pdo->exec($SQL);
+            echo "migration 001 is rolled back" . PHP_EOL;
+
         }
         
 }
