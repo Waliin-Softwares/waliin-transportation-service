@@ -9,6 +9,7 @@ class Application{
     public Response $response;
     public Controller $controller;
     public Database $db;
+    public Session $session;
     public static Application $app;
 
     public function __construct(){
@@ -17,6 +18,7 @@ class Application{
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database();
+        $this->session = new Session();
     }
 
     public function run(){
