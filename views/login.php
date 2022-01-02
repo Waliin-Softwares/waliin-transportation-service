@@ -1,6 +1,7 @@
 <?php 
-
+    use app\core\form\Form;
 ?>
+
 
 <DOCTYPE html>
 <html lang="en">
@@ -13,23 +14,18 @@
     <title>Login</title>
 </head>
 
+
 <body>
-    <h2> Login </h2>
     <div class="container">
+        <h2> Login </h2>
         <div class="jumbotron">
             <div class="row">
                 <div class="col">
-                    <form action="/login" method="post">
-                        <div class="form-group">
-                            <label>Email address</label>
-                            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
+                    <?php $form = Form::begin('/login', 'post'); ?>
+                        <?php echo $form->field($model, 'email'); ?>
+                        <?php echo $form->field($model, 'password'); ?>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <?php Form::end(); ?>
                 </div>
             </div>
         </div>
