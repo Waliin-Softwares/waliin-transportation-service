@@ -18,15 +18,17 @@
 <body>
     <div class="container">
         <h2> Register </h2>
-        <div class="row">
-            <div class="col">
-                <?php $form = Form::begin('/register', 'post'); ?>
-                    <?php echo $form->field($model, 'name'); ?>
-                    <?php echo $form->field($model, 'email'); ?>
-                    <?php echo $form->field($model, 'password'); ?>
-                    <?php echo $form->field($model, 'confpass'); ?>
-                <button type="submit" class="btn btn-primary">Register</button>
-                <?php Form::end(); ?>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col">
+                    <?php $form = Form::begin('/register', 'post'); ?>
+                        <?php echo $form->field($model, 'name'); ?>
+                        <?php echo $form->field($model, 'email'); ?>
+                        <?php echo $form->field($model, 'password'); ?>
+                        <?php echo $form->field($model, 'confirmPassword'); ?>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <?php Form::end(); ?>
+                </div>
             </div>
         </div>
     </div>
