@@ -7,7 +7,7 @@ class RegisterModel extends DbModel{
     public string $name="";
     public string $email="";
     public string $password="";
-    public string $confpass="";
+    public string $confirmPassword="";
 
     public function register(){
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
@@ -19,7 +19,7 @@ class RegisterModel extends DbModel{
             'name' => [self::RULE_REQUIRED],
             'email' => [self::RULE_REQUIRED, self::RULE_EMAIL, self::RULE_UNIQUE],
             'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 6], [self::RULE_MAX, 'max' => 20]],
-            'confpass' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']],
+            'confirmPassword' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']],
         ];
     }
     public function tableName(){

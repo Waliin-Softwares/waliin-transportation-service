@@ -14,6 +14,7 @@ class Field{
     }
 
     public function __toString(){
+        $label = ucfirst(preg_replace('/([A-Z])/', ' $1', $this->attribute));
         return sprintf('
                 <div class="form-group">
                     <label>%s</label>
@@ -23,7 +24,7 @@ class Field{
                     </div>
                 </div>
             ', 
-                $this->attribute, 
+                $label, 
                 $this->attribute,
                 $this->model->{$this->attribute},
                 $this->model->hasError($this->attribute) ? ' is-invalid' : '',
