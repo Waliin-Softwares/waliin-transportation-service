@@ -27,7 +27,7 @@ class LoginModel extends Model{
                 return false;
             }
             else{
-                return Application::$app->user->login($user);
+                return Application::$app->login($user);
                 
             }
         }
