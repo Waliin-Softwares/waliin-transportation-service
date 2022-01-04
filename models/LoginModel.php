@@ -3,7 +3,7 @@
 namespace app\models;
 use app\core\Model;
 use app\core\Application;
-use app\models\RegisterModel;
+use app\models\User;
 
 class LoginModel extends Model{
     public string $email="";
@@ -16,7 +16,7 @@ class LoginModel extends Model{
         ];
     }
     public function login(){
-        $user = RegisterModel::findOne(['email' => $this->email]);
+        $user = User::findOne(['email' => $this->email]);
         if(!$user){
             $this->addError("email", "user does't exist with this email");
             return false;
@@ -27,7 +27,7 @@ class LoginModel extends Model{
                 return false;
             }
             else{
-                // Application::$app->user->login($user);
+                Application::$app->user->login($user);
                 return true;
             }
         }

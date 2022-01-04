@@ -5,7 +5,7 @@ use app\core\DbModel;
 
 
 
-class RegisterModel extends DbModel{
+class User extends DbModel{
     public string $name="";
     public string $email="";
     public string $password="";
