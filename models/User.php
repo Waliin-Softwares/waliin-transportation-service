@@ -30,6 +30,9 @@ class User extends DbModel{
     public function attributes(){
         return ['name', 'email', 'password'];
     }
+    public function primaryKey(){
+        return 'id';
+    }
 
 }
 

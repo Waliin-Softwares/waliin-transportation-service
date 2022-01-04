@@ -4,6 +4,7 @@ namespace app\core;
 abstract class DbModel extends Model{
     abstract public function tableName();
     abstract public function attributes();
+    abstract public function primaryKey();
     public function save(){
         $tableName = $this->tableName();
         $attributes = $this->attributes();

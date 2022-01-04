@@ -27,12 +27,12 @@ class LoginModel extends Model{
                 return false;
             }
             else{
-                Application::$app->user->login($user);
-                return true;
+                return Application::$app->user->login($user);
+                
             }
         }
 
-        return true;
+        
     }
 }
 
