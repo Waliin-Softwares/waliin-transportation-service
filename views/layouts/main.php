@@ -26,7 +26,6 @@
                     <li class="active"><a href="/">Home</a></li>
                     <li><a href="/contact">Contact</a></li>
                     <?php if(Application::$app->user): ?>
-                        <?php for($i=0; $i<100; $i++)echo "&nbsp";?>
                         <li> <a href="/logout"><?php echo Application::$app->user->name; ?> Logout</a></li>
                     <?php else: ?>
                     <li><a href="/login">Login</a></li>
@@ -69,9 +68,6 @@
 
 </html>
  
-
-<h1
-
 
 
 
