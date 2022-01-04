@@ -19,23 +19,21 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Walin</a>
+                <a class="navbar-brand" href="#">Waliin Transporation Service</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <?php if(Application::$app->user): ?>
-                    <div class="container">
-                         <div class="col-sm-4">
-                            <p>Welcome, <?php echo Application::$app->user->name; ?></p>
-                            <a href="/logout">Logout</a>
-                        </div>
-                    </div>
-                <?php else: ?>
+            <div id="navcol-1" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav ms-auto">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <?php if(Application::$app->user): ?>
+                        <?php for($i=0; $i<100; $i++)echo "&nbsp";?>
+                        <li> <a href="/logout"><?php echo Application::$app->user->name; ?> Logout</a></li>
+                    <?php else: ?>
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
-                <?php endif; ?>
-            </ul>
+                    <?php endif; ?>
+                </ul>
+            </div>
         </div>
     </nav>
 
