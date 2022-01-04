@@ -3,6 +3,7 @@
 namespace app\models;
 use app\core\Model;
 use app\core\Application;
+use app\models\RegisterModel;
 
 class LoginModel extends Model{
     public string $email="";
@@ -15,18 +16,18 @@ class LoginModel extends Model{
         ];
     }
     public function login(){
-        $user = Application::$app->db->queryOne("SELECT * FROM users WHERE email=:email", [':email'=>$this->email]);
+        $user = RegisterModel::findOne(['email' => $this->email]);
         if(!$user){
-            $this->addError("email", "user does't extist with this email");
+            $this->addError("email", "user does't exist with this email");
             return false;
         }
         else{
-            if(!password_verify($this->password, $user['password'])){
+            if(!password_verify($this->password, $user->password)){
                 $this->addError("password", "password is incorrect");
                 return false;
             }
             else{
-                Application::$app->user->login($user);
+                // Application::$app->user->login($user);
                 return true;
             }
         }

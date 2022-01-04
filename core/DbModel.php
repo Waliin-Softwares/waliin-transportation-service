@@ -21,11 +21,13 @@ abstract class DbModel extends Model{
     public static function prepare($sql){
         return Application::$app->db->pdo->prepare($sql);
     }
-    public function finOne($where){
+    public function findOne($where){
         $tableName = static::tableName();
-        $attributes = array_keys($ehere);
-        $sql = impolde("AND ", array_map(fn($atrr) => "$atrr = :$attr", $attributes));
-        self::prepare("SELECT * FROM $tableName WHERE $sql");
+        $attributes = array_keys($where);
+        $sql = implode("AND ", array_map(function($attribute){
+            return "$attribute = :$attribute";
+        }, $attributes));
+        $statement = self::prepare("SELECT * FROM $tableName WHERE $sql");
         foreach($where as $key => $item){
             $statement->bindValue(":$key", $item);
         }

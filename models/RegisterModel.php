@@ -3,6 +3,8 @@
 namespace app\models;
 use app\core\DbModel;
 
+
+
 class RegisterModel extends DbModel{
     public string $name="";
     public string $email="";
@@ -28,7 +30,6 @@ class RegisterModel extends DbModel{
     public function attributes(){
         return ['name', 'email', 'password'];
     }
-
 
 }
 
