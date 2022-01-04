@@ -15,19 +15,31 @@
 </head>
 
 <body style="background-color:grey">
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">MVC</a>
+                <a class="navbar-brand" href="#">Walin</a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/contact">Contact</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
+                <?php if(Application::$app->user): ?>
+                    <div class="container">
+                         <div class="col-sm-4">
+                            <p>Welcome, <?php echo Application::$app->user->name; ?></p>
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                <?php endif; ?>
             </ul>
         </div>
     </nav>
+
+
 
     <div class="container">
         <?php if (Application::$app->session->getFlash('success')): ?>
@@ -38,6 +50,8 @@
         {{content}}
     </div>
      
+
+
     <footer  style="padding:50px 0;color:#f0f9ff;background-color:#282d32">
         <div class="container">
             <div class="row">
