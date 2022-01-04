@@ -33,35 +33,38 @@ abstract class Model{
                     $ruleName = $rule[0];
                 }
                 if($ruleName === self::RULE_REQUIRED && !$value){
-                    $this->addError($attribute, $ruleName);
+                    $this->addErrorForRule($attribute, $ruleName);
                 }
                 if($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)){
-                    $this->addError($attribute, $ruleName);
+                    $this->addErrorForRule($attribute, $ruleName);
                 }
                 if($ruleName === self::RULE_MIN && strlen($value) < $rule["min"]){
-                    $this->addError($attribute, $ruleName, $rule);
+                    $this->addErrorForRule($attribute, $ruleName, $rule);
                 }
                 if($ruleName === self::RULE_MAX && strlen($value) > $rule["max"]){
-                    $this->addError($attribute, $ruleName, $rule);
+                    $this->addErrorForRule($attribute, $ruleName, $rule);
                 }
                 if($ruleName === self::RULE_MATCH && $value !== $this->{$rule["match"]}){
-                    $this->addError($attribute, $ruleName, $rule);
+                    $this->addErrorForRule($attribute, $ruleName, $rule);
                 }
                 if($ruleName === self::RULE_UNIQUE && $this->findBy($attribute, $value)){
-                    $this->addError($attribute, $ruleName, $rule);
+                    $this->addErrorForRule($attribute, $ruleName, $rule);
                 }
             }
         }
         return empty($this->errors);
     }
-
-    public function addError($attribute, $ruleName, $params = []){
+    
+    private function addErrorForRule($attribute, $ruleName, $params = []){
         $message = $this->errorMessages()[$ruleName] ?? "";
         foreach($params as $key => $value){
             if($key !== 0){
                 $message = str_replace("{{$key}}", $value, $message);
             }
         }
+        $this->errors[$attribute][] = $message;
+    }
+    public function addError($attribute, $message){
         $this->errors[$attribute][] = $message;
     }
 

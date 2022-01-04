@@ -53,6 +53,11 @@ class Database{
             $stmt->execute(['migration' => $migration]);
         }
     }
+    public function queryOne($sql, $params = []){
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetch();
+    }
     public function prepare($sql){
         return $this->pdo->prepare($sql);
     }

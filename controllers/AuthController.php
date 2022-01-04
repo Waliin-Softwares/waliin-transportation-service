@@ -14,9 +14,10 @@ class AuthController extends Controller{
         $loginModel = new LoginModel();
         if($request->isPost()){
             $loginModel->loadData($request->getBody());
-            if($loginModel->validate() && $loginModel->login())
+            if($loginModel->validate() && $loginModel->login()){
                 Application::$app->response->redirect("/");
                 exit;
+            }
         }
         return $this->render("login", [
             'model' => $loginModel
