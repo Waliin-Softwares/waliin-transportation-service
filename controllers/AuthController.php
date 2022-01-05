@@ -50,6 +50,11 @@ class AuthController extends Controller{
         Application::$app->logout();
         Application::$app->response->redirect("/");
     }
+    public function profile(){
+        $this->setLayout("auth");
+        return $this->render("profile");
+    }
+    
 }
 
 ?>

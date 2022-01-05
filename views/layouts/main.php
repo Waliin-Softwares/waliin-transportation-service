@@ -27,10 +27,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php if(Application::$app->user): ?>
-                    <li> <a href="/logout"><?php echo Application::$app->user->name; ?> Logout</a></li>
+                    <li><a href="/profile"> Profile <?php echo " ". Application::$app->user->name ?> </a></li>
+                    <li> <a href="/logout"> Logout</a></li>
                 <?php else: ?>
-                <li><a href="/login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-                <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+                    <li><a href="/login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                    <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -45,23 +46,19 @@
         <?php endif; ?>
         {{content}}
     </div>
-     
 
-
-    <footer  style="padding:50px 0;color:#f0f9ff;background-color:#282d32">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-3 item">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Hosting</a></li>
-                    </ul>
-                </div>
+            <div class="col-sm-6 col-md-3 item">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Hosting</a></li>
+                </ul>
+                <p class="text-muted">Copyright &copy; 2022 Waliin Transportation Service</p>
             </div>
-            <p class="copyright">Company Name © 2021</p>
         </div>
+        
     </footer>
 </body>
 
