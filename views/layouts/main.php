@@ -14,29 +14,28 @@
     <title>Page</title>
 </head>
 
-<body style="background-color:grey">
-
+<body style="background-color:white">
+    
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Waliin Transporation Service</a>
             </div>
-            <div id="navcol-1" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav ms-auto">
-                    <li class="active"><a href="/">Home</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <?php if(Application::$app->user): ?>
-                        <li> <a href="/logout"><?php echo Application::$app->user->name; ?> Logout</a></li>
-                    <?php else: ?>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
-                    <?php endif; ?>
-                </ul>
-            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <?php if(Application::$app->user): ?>
+                    <li> <a href="/logout"><?php echo Application::$app->user->name; ?> Logout</a></li>
+                <?php else: ?>
+                <li><a href="/login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+                <?php endif; ?>
+            </ul>
         </div>
-    </nav>
-
-
+    </nav> 
+                
 
     <div class="container">
         <?php if (Application::$app->session->getFlash('success')): ?>
