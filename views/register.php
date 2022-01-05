@@ -24,8 +24,8 @@
                     <?php $form = Form::begin('/register', 'post'); ?>
                         <?php echo $form->field($model, 'name'); ?>
                         <?php echo $form->field($model, 'email'); ?>
-                        <?php echo $form->field($model, 'password'); ?>
-                        <?php echo $form->field($model, 'confirmPassword'); ?>
+                        <?php echo $form->field($model, 'password', 'password'); ?>
+                        <?php echo $form->field($model, 'confirmPassword', 'password'); ?>
                     <button type="submit" class="btn btn-primary">Register</button>
                     <?php Form::end(); ?>
                 </div>

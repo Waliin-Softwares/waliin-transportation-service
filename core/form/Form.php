@@ -17,8 +17,8 @@ class Form{
         return '</form>';
     }
 
-    public function field(Model $model, $attribute){
-        return new Field($model, $attribute);
+    public function field(Model $model, $attribute, $type="text"){
+        return new Field($model, $attribute, $type);
     }
 
 }
