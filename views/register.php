@@ -22,8 +22,13 @@
             <div class="row">
                 <div class="col">
                     <?php $form = Form::begin('/register', 'post'); ?>
-                        <?php echo $form->field($model, 'name'); ?>
+                        <?php echo $form->field($model, 'firstName'); ?>
+                        <?php echo $form->field($model, 'lastName'); ?>
+                        <?php echo $form->field($model, 'username'); ?>
                         <?php echo $form->field($model, 'email'); ?>
+                        <?php echo $form->field($model, 'address'); ?>
+                        <?php echo $form->field($model, 'phoneNumber')?>
+                        <?php echo $form->field($model, 'gender', 'gender'); ?>
                         <?php echo $form->field($model, 'password', 'password'); ?>
                         <?php echo $form->field($model, 'confirmPassword', 'password'); ?>
                     <button type="submit" class="btn btn-primary">Register</button>
