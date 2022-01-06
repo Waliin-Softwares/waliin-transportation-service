@@ -9,6 +9,7 @@ abstract class Model{
     public const RULE_MAX = 'max';
     public const RULE_MATCH = 'match';
     public const RULE_UNIQUE = 'unique';
+    public const RULE_ALPHA = 'alpha';
     public array $errors = [];
 
     abstract public function rules();
@@ -50,6 +51,9 @@ abstract class Model{
                 if($ruleName === self::RULE_UNIQUE && $this->findBy($attribute, $value)){
                     $this->addErrorForRule($attribute, $ruleName, $rule);
                 }
+                if($ruleName === self::RULE_ALPHA && !ctype_alpha($value)){
+                    $this->addErrorForRule($attribute, $ruleName, $rule);
+                }
             }
         }
         return empty($this->errors);
@@ -76,6 +80,7 @@ abstract class Model{
             self::RULE_MAX => 'This field must be at most {max} characters long',
             self::RULE_MATCH => 'This field must match {match}',
             self::RULE_UNIQUE => 'This field must be unique',
+            self::RULE_ALPHA => 'This feild must be an alphabet'
         ];
     }
     public function getError($attribute){
