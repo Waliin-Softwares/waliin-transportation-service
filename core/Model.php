@@ -11,6 +11,7 @@ abstract class Model{
     public const RULE_UNIQUE = 'unique';
     public const RULE_ALPHA = 'alpha';
     public const RULE_PHONENUM = 'phonenum';
+    public const RULE_NUNIQUE = 'nunique';
     public array $errors = [];
 
     abstract public function rules();
@@ -22,11 +23,9 @@ abstract class Model{
             }
         }
     }
-    
-
-
 
     public function validate(){
+
         foreach($this->rules() as $attribute => $rules){
             $value = $this->{$attribute};
             foreach($rules as $rule){
@@ -57,6 +56,9 @@ abstract class Model{
                 }
                 if($ruleName === self::RULE_PHONENUM && (!ctype_digit($value) || strlen($value) != 10)){
                     $this->addErrorForRule($attribute, $ruleName);
+                }
+                if($ruleName === self::RULE_NUNIQUE && $this->findBy($attribute, $value) && $value != Application::$app->user->{$attribute}){
+                    $this->addErrorForRule($attribute, self::RULE_UNIQUE);
                 }
             }
         }

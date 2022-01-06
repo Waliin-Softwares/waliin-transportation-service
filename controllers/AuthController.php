@@ -7,6 +7,7 @@ use app\core\Request;
 use app\core\Response;
 use app\models\User;
 use app\models\LoginModel;
+use app\models\UpdateProfileModel;
 use app\core\Application;
 
 class AuthController extends Controller{
@@ -56,17 +57,18 @@ class AuthController extends Controller{
             $response->redirect("/");
             exit;
         }
+        $model = new UpdateProfileModel();
         if($request->isPost()){
-            $user = Application::$app->user;
-            $user->loadData($request->getBody());
-            if($user->validate() && $user->update()){
+            $model->loadData($request->getBody());
+            if($model->validate() && $model->update()){
                 Application::$app->session->setFlash('success', "Profile updated");
                 $response->redirect("/");
                 exit;
             }
         }
         return $this->render("profile", [
-            'model' => Application::$app->user
+            'model' => $model,
+            'user' => Application::$app->user
         ]);
         
     }
