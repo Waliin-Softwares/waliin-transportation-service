@@ -19,6 +19,8 @@
     $app->router->get("/logout", [AuthController::class, "logout"]);
     $app->router->get("/profile", [AuthController::class, "profile"]);
     $app->router->post("/profile", [AuthController::class, "profile"]);
+    $app->router->get("/changepassword", [AuthController::class, "changePassword"]);
+    $app->router->post("/changepassword", [AuthController::class, "changePassword"]);
 
     
 

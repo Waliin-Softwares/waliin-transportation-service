@@ -12,6 +12,7 @@ abstract class Model{
     public const RULE_ALPHA = 'alpha';
     public const RULE_PHONENUM = 'phonenum';
     public const RULE_NUNIQUE = 'nunique';
+    public const RULE_DBMATCH = 'dbmatch';
     public array $errors = [];
 
     abstract public function rules();
@@ -60,6 +61,9 @@ abstract class Model{
                 if($ruleName === self::RULE_NUNIQUE && $this->findBy($attribute, $value) && $value != Application::$app->user->{$attribute}){
                     $this->addErrorForRule($attribute, self::RULE_UNIQUE);
                 }
+                if($ruleName === self::RULE_DBMATCH && $value != $this->{$rule["match"]} && !password_verify($value, $this->{$rule["match"]})){
+                    $this->addErrorForRule($attribute, $ruleName, $rule);
+                }
             }
         }
         return empty($this->errors);
@@ -87,7 +91,8 @@ abstract class Model{
             self::RULE_MATCH => 'This field must match {match}',
             self::RULE_UNIQUE => 'This field must be unique',
             self::RULE_ALPHA => 'This feild must be an alphabet',
-            self::RULE_PHONENUM => 'Incorrect phone number format'
+            self::RULE_PHONENUM => 'Incorrect phone number format',
+            self::RULE_DBMATCH => 'This field must be similar to your {match}' 
         ];
     }
     public function getError($attribute){

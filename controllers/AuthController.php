@@ -8,6 +8,7 @@ use app\core\Response;
 use app\models\User;
 use app\models\LoginModel;
 use app\models\UpdateProfileModel;
+use app\models\ChangePasswordModel;
 use app\core\Application;
 
 class AuthController extends Controller{
@@ -72,6 +73,27 @@ class AuthController extends Controller{
         ]);
         
     }
+    public function changePassword(Request $request, Response $response){
+        if(!Application::$app->isLoggedIn()){
+            $response->redirect("/");
+            exit;
+        }
+        $model = new ChangePasswordModel();
+        if($request->isPost()){
+            $model->loadData($request->getBody());
+            if($model->validate() && $model->changePassword()){
+                Application::$app->session->setFlash('success', "Password changed");
+                $response->redirect("/");
+                exit;
+            }
+        }
+        return $this->render("changepassword", [
+            'model' => $model,
+            'user' => Application::$app->user
+        ]);
+        
+    }
+
     
 }
 

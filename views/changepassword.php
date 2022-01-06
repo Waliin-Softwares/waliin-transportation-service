@@ -1,7 +1,6 @@
 <?php
     use app\core\form\Form;
 ?>
-<h2 class="text-center">Update Profile</h2>
 <div class="row">
     <div class="container">
         <h2> Change Password </h2>

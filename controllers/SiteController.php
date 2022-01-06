@@ -4,15 +4,15 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\core\Request;
+use app\core\Application;
 
 class SiteController extends Controller{
     
 
     public function home(){
-        $params = [
-            'name' => "jonny"
-        ];
-        return $this->render("home", $params);
+        return $this->render("home", [
+            'model' => Application::$app->user
+        ]);
     }
     
     public function contact(){

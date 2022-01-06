@@ -3,8 +3,10 @@
     use app\core\form\Form;
 
 ?>
+    <h2> Update Profile </h2>
+         <a href="/changepassword">Change Password</a>
      <div class="container">
-         <h2> Update Profile </h2>
+         
          <div class="jumbotron">
              <div class="row">
                  <div class="col">
