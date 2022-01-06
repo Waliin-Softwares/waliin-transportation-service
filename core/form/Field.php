@@ -22,8 +22,8 @@ class Field{
                 <div class="form-group">
                     <label>Gender</label>
                     <select name="gender" class="form-control">
-                        <option value="male" %s>Male </option>
-                        <option value="female" %s>Female </option>
+                        <option value="M" %s>Male </option>
+                        <option value="F" %s>Female </option>
                     </select>
                 </div>
                 ', 
