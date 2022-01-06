@@ -10,6 +10,7 @@ abstract class Model{
     public const RULE_MATCH = 'match';
     public const RULE_UNIQUE = 'unique';
     public const RULE_ALPHA = 'alpha';
+    public const RULE_PHONENUM = 'phonenum';
     public array $errors = [];
 
     abstract public function rules();
@@ -54,6 +55,12 @@ abstract class Model{
                 if($ruleName === self::RULE_ALPHA && !ctype_alpha($value)){
                     $this->addErrorForRule($attribute, $ruleName, $rule);
                 }
+                if(ruleName === self::RULE_PHONENUM && !preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $value)){
+                    $this->addErrorForRule($attribute, $ruleName, $rule);
+                }
+                if(ruleName === self::RULE_PHONENUM && (!ctype_digit($value) || strlen($value) != 10)){
+                    $this->addErrorForRule($attribute, $ruleName, $rule);
+                }
             }
         }
         return empty($this->errors);
@@ -80,7 +87,8 @@ abstract class Model{
             self::RULE_MAX => 'This field must be at most {max} characters long',
             self::RULE_MATCH => 'This field must match {match}',
             self::RULE_UNIQUE => 'This field must be unique',
-            self::RULE_ALPHA => 'This feild must be an alphabet'
+            self::RULE_ALPHA => 'This feild must be an alphabet',
+            self::RULE_PHONENUM => 'Incorrect phone number format'
         ];
     }
     public function getError($attribute){
@@ -98,5 +106,6 @@ abstract class Model{
         return $val;
         
     }
+    
 }
 ?>
