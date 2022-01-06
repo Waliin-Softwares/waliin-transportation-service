@@ -17,7 +17,22 @@ class Field{
 
     public function __toString(){
         $label = ucfirst(preg_replace('/([A-Z])/', ' $1', $this->attribute));
-        echo $this->label;
+        if($this->type == 'gender'){
+            return sprintf('
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select name="gender" class="form-control">
+                        <option value="male" %s>Male </option>
+                        <option value="female" %s>Female </option>
+                    </select>
+                </div>
+                ', 
+                $this->model->{$this->attribute}=="male" ? "selected" : "",
+                $this->model->{$this->attribute}=="female" ? "selected" : ""
+
+        );
+                
+        }
         return sprintf('
                 <div class="form-group">
                     <label>%s</label>
