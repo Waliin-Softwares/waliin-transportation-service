@@ -46,6 +46,10 @@ class User extends DbModel{
     public function primaryKey(){
         return 'id';
     }
+    public function getName(){
+        return $this->firstName . " " . $this->lastName;
+    }
+
 
 }
 

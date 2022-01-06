@@ -50,16 +50,13 @@ abstract class Model{
                     $this->addErrorForRule($attribute, $ruleName, $rule);
                 }
                 if($ruleName === self::RULE_UNIQUE && $this->findBy($attribute, $value)){
-                    $this->addErrorForRule($attribute, $ruleName, $rule);
+                    $this->addErrorForRule($attribute, $ruleName);
                 }
                 if($ruleName === self::RULE_ALPHA && !ctype_alpha($value)){
-                    $this->addErrorForRule($attribute, $ruleName, $rule);
+                    $this->addErrorForRule($attribute, $ruleName);
                 }
-                if(ruleName === self::RULE_PHONENUM && !preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $value)){
-                    $this->addErrorForRule($attribute, $ruleName, $rule);
-                }
-                if(ruleName === self::RULE_PHONENUM && (!ctype_digit($value) || strlen($value) != 10)){
-                    $this->addErrorForRule($attribute, $ruleName, $rule);
+                if($ruleName === self::RULE_PHONENUM && (!ctype_digit($value) || strlen($value) != 10)){
+                    $this->addErrorForRule($attribute, $ruleName);
                 }
             }
         }

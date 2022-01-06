@@ -27,7 +27,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php if(Application::$app->user): ?>
-                    <li><a href="/profile"> Profile <?php echo " ". Application::$app->user->name ?> </a></li>
+                    <li><a href="/profile"> Profile <?php echo " ". Application::$app->user->getName() ?> </a></li>
                     <li> <a href="/logout"> Logout</a></li>
                 <?php else: ?>
                     <li><a href="/login"><span class="glyphicon glyphicon-user"></span> Login</a></li>

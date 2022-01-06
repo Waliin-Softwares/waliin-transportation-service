@@ -27,8 +27,8 @@ class Field{
                     </select>
                 </div>
                 ', 
-                $this->model->{$this->attribute}=="male" ? "selected" : "",
-                $this->model->{$this->attribute}=="female" ? "selected" : ""
+                $this->model->gender=="M" ? "selected" : "",
+                $this->model->gender=="F" ? "selected" : ""
 
         );
                 

@@ -23,7 +23,7 @@
                 <div class="col">
                     <?php $form = Form::begin('/login', 'post'); ?>
                         <?php echo $form->field($model, 'email'); ?>
-                        <?php echo $form->field($model, 'password'); ?>
+                        <?php echo $form->field($model, 'password', 'password'); ?>
                     <button type="submit" class="btn btn-primary">Login</button>
                     <?php Form::end(); ?>
                 </div>

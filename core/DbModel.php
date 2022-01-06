@@ -35,6 +35,22 @@ abstract class DbModel extends Model{
         $statement->execute();
         return $statement->fetchObject(static::class);
     }
+    public function update(){
+        $tableName = $this->tableName();
+        $attributes = $this->attributes();
+        $primaryKey = $this->primaryKey();
+        $sql = implode(',', array_map(function($attribute){
+            return "$attribute = :$attribute";
+        }, $attributes));
+        $statement = self::prepare("UPDATE $tableName SET $sql WHERE $primaryKey = :$primaryKey");
+        foreach($attributes as $attribute){
+            $statement->bindValue(":$attribute", $this->{$attribute});
+        }
+        var_dump($statement);
+        exit;
+        $statement->execute();
+        return true;
+    }
 }
 
 ?>

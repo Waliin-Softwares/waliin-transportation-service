@@ -55,6 +55,9 @@ class Application{
         $this->session->remove("user");
         $this->user = null;
     }
+    public function isLoggedIn(){
+        return $this->user !== null;
+    }
     
 }
 
