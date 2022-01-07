@@ -14,6 +14,7 @@
         <h2> Welcome <?= $model->getName() ?> </h2>
         <p> You are an officer user </p>
         <p> <a href=" /addemployee"> Add Employee </a> </p>
+        <p> <a href=" /addroute"> Create route </a> </p>
     <?php else: ?>
         <h2> Welcome <?= $model->getName() ?> </h2>
         <p> You are a regular user </p>

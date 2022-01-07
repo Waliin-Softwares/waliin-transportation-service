@@ -9,10 +9,15 @@ use app\models\User;
 use app\models\LoginModel;
 use app\models\UpdateProfileModel;
 use app\models\ChangePasswordModel;
+use app\models\Route;
 use app\core\Application;
 
 class AuthController extends Controller{
     public function login(Request $request, Response $response){
+        if(Application::$app->isLoggedIn()){
+            $response->redirect("/");
+            exit;
+        }
         $this->setLayout("auth");
         $loginModel = new LoginModel();
         if($request->isPost()){
@@ -27,6 +32,10 @@ class AuthController extends Controller{
         ]);
     }
     public function register(Request $request, Response $response){
+        if(Application::$app->isLoggedIn()){
+            $response->redirect("/");
+            exit;
+        }
         $this->setLayout("auth");
         $registerModel = new User();
         
@@ -119,7 +128,6 @@ class AuthController extends Controller{
         ]);
 
     }
-
     public function addOfficer(Request $request, Response $response){
         if(!Application::$app->isLoggedIn()){
             $response->redirect("/");
@@ -170,7 +178,31 @@ class AuthController extends Controller{
         ]);
 
     }
-    
+    public function addRoute(Request $request, Response $response){
+        if(!Application::$app->isLoggedIn()){
+            $response->redirect("/");
+            exit;
+        }
+        $user = Application::$app->user;
+        if(!$user->isOfficer()){
+            $response->redirect("/");
+            exit;
+        }
+        $this->setLayout("auth");
+        $model = new Route();
+        if($request->isPost()){
+            $model->loadData($request->getBody());
+            if($model->validate() && $model->add()){
+                Application::$app->session->setFlash('success', "succesfully created a route");
+                $response->redirect("/");
+                exit;
+
+            }
+        }
+        return $this->render("createroute", [
+            'model' => $model
+        ]);
+    }
 }
 
 ?>
