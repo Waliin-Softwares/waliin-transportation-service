@@ -25,6 +25,8 @@
     $app->router->post("/addadmin", [AuthController::class, "addAdmin"]);
     $app->router->get("/addofficer", [AuthController::class, "addOfficer"]);
     $app->router->post("/addofficer", [AuthController::class, "addOfficer"]);
+    $app->router->get("/addemployee", [AuthController::class, "addEmployee"]);
+    $app->router->post("/addemployee", [AuthController::class, "addEmployee"]);
 
     
 

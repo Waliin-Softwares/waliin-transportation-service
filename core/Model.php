@@ -20,8 +20,6 @@ abstract class Model{
     public function loadData($data){
         foreach($data as $key => $value){
             if(property_exists($this, $key)){
-                var_dump($this->{$key});
-                var_dump($value);
                 $this->{$key} = $value;
             }
         }

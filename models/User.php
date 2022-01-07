@@ -55,6 +55,12 @@ class User extends DbModel{
     public function isSuper(){
         return $this->role == "super";
     }
+    public function isOfficer(){
+        return $this->role == "officer";
+    }
+    public function isEmployee(){
+        return $this->role == "employee";
+    }
     public function changeVals($key, $value){
         $set = [$key => $value];
         foreach($this->others as $id){

@@ -10,6 +10,10 @@
         <h2> Welcome <?= $model->getName() ?> </h2>
         <p> You are an admin user </p>
         <p> <a href=" /addofficer"> Add Officer </a> </p>
+    <?php elseif($model->isOfficer()): ?>
+        <h2> Welcome <?= $model->getName() ?> </h2>
+        <p> You are an officer user </p>
+        <p> <a href=" /addemployee"> Add Employee </a> </p>
     <?php else: ?>
         <h2> Welcome <?= $model->getName() ?> </h2>
         <p> You are a regular user </p>
