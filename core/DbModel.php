@@ -74,6 +74,7 @@ abstract class DbModel extends Model{
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_CLASS, static::class);
     }
+
     public function updateOne($set, $where){
         $tableName = $this->tableName();
         $attributes = array_keys($set);
@@ -93,6 +94,7 @@ abstract class DbModel extends Model{
         }
         $statement->execute();
         return true;
+        
     }
     
 }
