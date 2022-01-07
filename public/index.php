@@ -21,6 +21,8 @@
     $app->router->post("/profile", [AuthController::class, "profile"]);
     $app->router->get("/changepassword", [AuthController::class, "changePassword"]);
     $app->router->post("/changepassword", [AuthController::class, "changePassword"]);
+    $app->router->get("/addadmin", [AuthController::class, "addAdmin"]);
+    $app->router->post("/addadmin", [AuthController::class, "addAdmin"]);
 
     
 

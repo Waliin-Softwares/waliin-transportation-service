@@ -49,6 +49,52 @@ abstract class DbModel extends Model{
         $statement->execute();
         return true;
     }
+    public function delete(){
+        $tableName = $this->tableName();
+        $primaryKey = $this->primaryKey();
+        $statement = self::prepare("DELETE FROM $tableName WHERE $primaryKey = :$primaryKey");
+        $statement->bindValue(":$primaryKey", $this->{$primaryKey});
+        $statement->execute();
+        return true;
+    }
+    public function findAll($where = []){
+        $tableName = $this->tableName();
+        $attributes = array_keys($where);
+        $sql = implode("AND ", array_map(function($attribute){
+            return "$attribute = :$attribute";
+        }, $attributes));
+        $stmt = "SELECT * FROM $tableName ";
+        if(!empty($sql)){
+            $stmt .= "WHERE $sql";
+        }
+        $statement = self::prepare($stmt);
+        foreach($where as $key => $item){
+            $statement->bindValue(":$key", $item);
+        }
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_CLASS, static::class);
+    }
+    public function updateOne($set, $where){
+        $tableName = $this->tableName();
+        $attributes = array_keys($set);
+        $sql = implode(',', array_map(function($attribute){
+            return "$attribute = :$attribute";
+        }, $attributes));
+        $attributes = array_keys($where);
+        $sql2 = implode("AND ", array_map(function($attribute){
+            return "$attribute = :$attribute";
+        }, $attributes));
+        $statement = self::prepare("UPDATE $tableName SET $sql WHERE $sql2");
+        foreach($set as $key => $item){
+            $statement->bindValue(":$key", $item);
+        }
+        foreach($where as $key => $item){
+            $statement->bindValue(":$key", $item);
+        }
+        $statement->execute();
+        return true;
+    }
+    
 }
 
 ?>

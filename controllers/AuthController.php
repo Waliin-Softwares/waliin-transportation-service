@@ -93,7 +93,31 @@ class AuthController extends Controller{
         ]);
         
     }
+    public function addAdmin(Request $request, Response $response){
 
+        $this->setLayout("auth");
+        $user = Application::$app->user;
+        if(!$user->isSuper()){
+            $response->redirect("/");
+            exit;
+        }
+        
+        var_dump($_POST);
+        if($request->isPost()){
+            $user->loadData($request->getBody());
+            if($user->addAdmin()){
+                Application::$app->session->setFlash('success', "Thanks for registering click the login to sign in");
+                $response->redirect("/");
+                exit;
+
+            }
+            
+        }
+        return $this->render("superuser", [
+            'model' => $user
+        ]);
+
+    }
     
 }
 

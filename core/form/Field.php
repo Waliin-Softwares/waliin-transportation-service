@@ -38,6 +38,17 @@ class Field{
             ;
             
         }
+        elseif($this->type == 'checkbox'){
+            $userid = $this->options[0];
+            $username = $this->options[1];
+            return "
+                <div class='form-group'>
+                <div class='checkbox'>
+                    <label><input type='checkbox' name='others[]' value='$userid'> $username</label>
+                </div>
+                </div>"
+            ;
+        }
                 
         return sprintf('
                 <div class="form-group">

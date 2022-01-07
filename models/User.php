@@ -16,6 +16,7 @@ class User extends DbModel{
     public string $role="customer";
     public string $address="";
     public string $phoneNumber="";
+    public array $others=[];
 
 
     public function register(){
@@ -48,6 +49,14 @@ class User extends DbModel{
     public function getName(){
         return $this->firstName . " " . $this->lastName;
     }
+    public function isAdmin(){
+        return $this->role == "admin";
+    }
+    public function isSuper(){
+        return $this->role == "super";
+    }
+
+    
 
 
 }
