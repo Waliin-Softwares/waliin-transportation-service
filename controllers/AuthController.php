@@ -119,6 +119,32 @@ class AuthController extends Controller{
         ]);
 
     }
+
+    public function addOfficer(Request $request, Response $response){
+        if(!Application::$app->isLoggedIn()){
+            $response->redirect("/");
+            exit;
+        }
+        $user = Application::$app->user;
+        if(!$user->isAdmin()){
+            $response->redirect("/");
+            exit;
+        }
+        $this->setLayout("auth");
+        if($request->isPost()){
+            $user->loadData($request->getBody());
+            if($user->changeVals('role', 'officer')){
+                Application::$app->session->setFlash('success', "succesfully added to officers");
+                $response->redirect("/");
+                exit;
+
+            }
+        }
+        return $this->render("addofficer", [
+            'model' => $user
+        ]);
+
+    }
     
 }
 

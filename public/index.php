@@ -23,6 +23,8 @@
     $app->router->post("/changepassword", [AuthController::class, "changePassword"]);
     $app->router->get("/addadmin", [AuthController::class, "addAdmin"]);
     $app->router->post("/addadmin", [AuthController::class, "addAdmin"]);
+    $app->router->get("/addofficer", [AuthController::class, "addOfficer"]);
+    $app->router->post("/addofficer", [AuthController::class, "addOfficer"]);
 
     
 
