@@ -94,26 +94,27 @@ class AuthController extends Controller{
         
     }
     public function addAdmin(Request $request, Response $response){
-
-        $this->setLayout("auth");
+        if(!Application::$app->isLoggedIn()){
+            $response->redirect("/");
+            exit;
+        }
         $user = Application::$app->user;
         if(!$user->isSuper()){
             $response->redirect("/");
             exit;
         }
-        
-        var_dump($_POST);
+        $this->setLayout("auth");
         if($request->isPost()){
             $user->loadData($request->getBody());
-            if($user->addAdmin()){
-                Application::$app->session->setFlash('success', "Thanks for registering click the login to sign in");
+            if($user->changeVals('role', 'admin')){
+                Application::$app->session->setFlash('success', "succesfully added to admins");
                 $response->redirect("/");
                 exit;
 
             }
             
         }
-        return $this->render("superuser", [
+        return $this->render("addadmin", [
             'model' => $user
         ]);
 
