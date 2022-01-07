@@ -28,7 +28,7 @@
                         <?php echo $form->field($model, 'email'); ?>
                         <?php echo $form->field($model, 'address'); ?>
                         <?php echo $form->field($model, 'phoneNumber')?>
-                        <?php echo $form->field($model, 'gender', 'gender'); ?>
+                        <?php echo $form->field($model, 'gender', 'select', ["M" => "Male", "F"=>"Female"] ) ?>
                         <?php echo $form->field($model, 'password', 'password'); ?>
                         <?php echo $form->field($model, 'confirmPassword', 'password'); ?>
                     <button type="submit" class="btn btn-primary">Register</button>
