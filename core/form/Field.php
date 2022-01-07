@@ -38,22 +38,7 @@ class Field{
             ;
             
         }
-        if($this->type == 'gender'){
-            return sprintf('
-                <div class="form-group">
-                    <label>Gender</label>
-                    <select name="gender" class="form-control">
-                        <option value="M" %s>Male </option>
-                        <option value="F" %s>Female </option>
-                    </select>
-                </div>
-                ', 
-                $this->model->gender=="M" ? "selected" : "",
-                $this->model->gender=="F" ? "selected" : ""
-
-        );
                 
-        }
         return sprintf('
                 <div class="form-group">
                     <label>%s</label>
