@@ -8,6 +8,7 @@ use app\core\Response;
 use app\models\Route;
 use app\models\Bus;
 use app\models\Manager;
+use app\models\Office;
 use app\core\Application;
 
 class TransportController extends Controller{
@@ -37,6 +38,31 @@ class TransportController extends Controller{
             'manager' => $manager
         ]);
 
+    }
+    public function addOffice(Request $request, Response $response){
+        if(!Application::$app->isLoggedIn()){
+            $response->redirect("/");
+            exit;
+        }
+        $user = Application::$app->user;
+        if(!$user->isManager()){
+            $response->redirect("/");
+            exit;
+        }
+        $this->setLayout("auth");
+        $model = new Office();
+        if($request->isPost()){
+            $model->loadData($request->getBody());
+            if($model->validate() && $model->add()){
+                Application::$app->session->setFlash('success', "succesfully created a new office");
+                $response->redirect("/");
+                exit;
+
+            }
+        }
+        return $this->render("createoffice", [
+            'model' => $model
+        ]);
     }
     public function addOfficer(Request $request, Response $response){
         if(!Application::$app->isLoggedIn()){

@@ -24,6 +24,8 @@
     $app->router->post("/changepassword", [AuthController::class, "changePassword"]);
     $app->router->get("/addmanager", [TransportController::class, "addManager"]);
     $app->router->post("/addmanager", [TransportController::class, "addManager"]);
+    $app->router->get("/addoffice", [TransportController::class, "addOffice"]);
+    $app->router->post("/addoffice", [TransportController::class, "addOffice"]);
     $app->router->get("/addofficer", [TransportController::class, "addOfficer"]);
     $app->router->post("/addofficer", [TransportController::class, "addOfficer"]);
     $app->router->get("/addemployee", [TransportController::class, "addEmployee"]);

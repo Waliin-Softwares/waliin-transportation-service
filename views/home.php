@@ -9,6 +9,7 @@
     <?php elseif($model->isManager()): ?>
         <h2> Welcome <?= $model->getName() ?> </h2>
         <p> You are an Manager </p>
+        <p> <a href=" /addoffice"> Create Office </a> </p>
         <p> <a href=" /addofficer"> Add Officer </a> </p>
         <p> <a href=" /addbus"> Add Bus </a> </p>
     <?php elseif($model->isOfficer()): ?>
