@@ -1,7 +1,7 @@
 <?php 
 
 use app\core\Application;
-class m_001{
+class m_003_create_users_table{
         
         public function up(){
             $db = Application::$app->db;
@@ -12,23 +12,24 @@ class m_001{
                 `firstName` varchar(255) NOT NULL,
                 `lastName` varchar(255) NOT NULL,
                 `password` varchar(255) NOT NULL,
-                `address` varchar(255),
                 `phoneNumber` varchar(10) NOT NULL,
                 `dateOfBirth` Date,
                 `gender` char(1),
                 `role` varchar(255) NOT NULL,
+                `address` int(11) NOT NULL,
                 `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                FOREIGN KEY(address) REFERENCES address(id)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
             $db->pdo->exec($SQL);
-            echo "migration 001 is applied" . PHP_EOL;
+            echo "migration 003 is applied" . PHP_EOL;
         }
         
         public function down(){
             $db = Application::$app->db;
             $SQL = "DROP TABLE `users`";
             $db->pdo->exec($SQL);
-            echo "migration 001 is rolled back" . PHP_EOL;
+            echo "migration 003 is rolled back" . PHP_EOL;
 
         }
         
