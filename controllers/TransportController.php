@@ -7,6 +7,7 @@ use app\core\Request;
 use app\core\Response;
 use app\models\Route;
 use app\models\Bus;
+use app\models\Manager;
 use app\core\Application;
 
 class TransportController extends Controller{
@@ -16,6 +17,8 @@ class TransportController extends Controller{
             exit;
         }
         $user = Application::$app->user;
+        $bus = new Bus();
+        $manager = new Manager();
         if(!$user->isSuper()){
             $response->redirect("/");
             exit;
@@ -23,7 +26,7 @@ class TransportController extends Controller{
         $this->setLayout("auth");
         if($request->isPost()){
             $user->loadData($request->getBody());
-            if($user->changeVals('role', 'manager')){
+            if($user->changeVals('role', 'manager') && $manager->add()){
                 Application::$app->session->setFlash('success', "succesfully added to managers");
                 $response->redirect("/");
                 exit;
@@ -32,7 +35,8 @@ class TransportController extends Controller{
             
         }
         return $this->render("addmanager", [
-            'model' => $user
+            'model' => $user,
+            'manager' => $manager
         ]);
 
     }

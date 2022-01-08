@@ -96,6 +96,20 @@ abstract class DbModel extends Model{
         return true;
         
     }
+    public function getOne($vals, $where){
+        $tableName = $this->tableName();
+        $attributes = array_keys($where);
+        $val = implode(", ", $vals);
+        $sql = implode("AND ", array_map(function($attribute){
+            return "$attribute = :$attribute";
+        }, $attributes));
+        $statement = self::prepare("SELECT $val FROM $tableName WHERE $sql");
+        foreach($where as $key => $item){
+            $statement->bindValue(":$key", $item);
+        }
+        $statement->execute();
+        return $statement->fetch();        
+    }
     
 }
 

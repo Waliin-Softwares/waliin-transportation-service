@@ -21,6 +21,14 @@ class User extends DbModel{
 
     public function register(){
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+        $Address = new Address();
+        $val = $Address->getOne(['id'], ["addressName" => $this->address]);
+        if(!$val){
+            $Address->set('addressName', $this->address);
+            $Address->save();
+            $val = $Address->getOne(['id'], ["addressName" => $this->address]);
+        }
+        $this->address = $val['id'];
         return $this->save();
     }
     public function rules(){
