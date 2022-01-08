@@ -204,7 +204,31 @@ class AuthController extends Controller{
             'model' => $model
         ]);
     }
+    public function addRoute(Request $request, Response $response){
+        if(!Application::$app->isLoggedIn()){
+            $response->redirect("/");
+            exit;
+        }
+        $user = Application::$app->user;
+        if(!$user->isOfficer()){
+            $response->redirect("/");
+            exit;
+        }
+        $this->setLayout("auth");
+        $model = new Route();
+        if($request->isPost()){
+            $model->loadData($request->getBody());
+            if($model->validate() && $model->add()){
+                Application::$app->session->setFlash('success', "succesfully created a route");
+                $response->redirect("/");
+                exit;
 
+            }
+        }
+        return $this->render("createroute", [
+            'model' => $model
+        ]);
+    }
 }
 
 ?>
