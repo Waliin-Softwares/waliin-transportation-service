@@ -6,8 +6,9 @@ use app\core\DbModel;
 
 
 class Bus extends DbModel{
-    public string $busNumber="";
+    public string $sideNumber="";
     public string $capacity="";
+    public string $plateNumber="";
     public array $others=[];
 
 
@@ -16,15 +17,16 @@ class Bus extends DbModel{
     }
     public function rules(){
         return [
-            'busNumber' => [self::RULE_REQUIRED, self::RULE_UNIQUE],
-            'capacity' => [self::RULE_REQUIRED]
+            'sideNumber' => [self::RULE_REQUIRED, self::RULE_UNIQUE],
+            'plateNumber' => [self::RULE_REQUIRED, self::RULE_UNIQUE, [self::RULE_MIN, 'min' => 6]],
+            'capacity' => [self::RULE_REQUIRED ]
         ];
     }
     public function tableName(){
         return "bus";
     }
     public function attributes(){
-        return ['busNumber', 'capacity'];
+        return ['sideNumber', 'plateNumber', 'capacity'];
     }
     public function primaryKey(){
         return 'id';

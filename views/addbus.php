@@ -22,7 +22,8 @@
             <div class="row">
                 <div class="col">
                     <?php $form = Form::begin('/addbus', 'post'); ?>
-                        <?php echo $form->field($model, 'busNumber'); ?>
+                        <?php echo $form->field($model, 'sideNumber'); ?>
+                        <?php echo $form->field($model, 'plateNumber'); ?>
                         <?php echo $form->field($model, 'capacity', 'number'); ?>
                     <button type="submit" class="btn btn-primary">Add</button>
                     <?php Form::end(); ?>

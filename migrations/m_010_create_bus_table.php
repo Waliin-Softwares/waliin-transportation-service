@@ -7,7 +7,8 @@ class m_010_create_bus_table{
             $db = Application::$app->db;
             $SQL =  "CREATE TABLE IF NOT EXISTS `bus`(
                 `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                `busNumber` varchar(255) NOT NULL,
+                `sideNumber` varchar(255) NOT NULL,
+                `plateNumber` varchar(255) NOT NULL,
                 `capacity` INT NOT NULL,
                 `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
