@@ -10,6 +10,7 @@ use app\models\LoginModel;
 use app\models\UpdateProfileModel;
 use app\models\ChangePasswordModel;
 use app\models\Route;
+use app\models\Bus;
 use app\core\Application;
 
 class AuthController extends Controller{
@@ -178,31 +179,32 @@ class AuthController extends Controller{
         ]);
 
     }
-    public function addRoute(Request $request, Response $response){
+    public function addBus(Request $request, Response $response){
         if(!Application::$app->isLoggedIn()){
             $response->redirect("/");
             exit;
         }
         $user = Application::$app->user;
-        if(!$user->isOfficer()){
+        if(!$user->isAdmin()){
             $response->redirect("/");
             exit;
         }
         $this->setLayout("auth");
-        $model = new Route();
+        $model = new Bus();
         if($request->isPost()){
             $model->loadData($request->getBody());
             if($model->validate() && $model->add()){
-                Application::$app->session->setFlash('success', "succesfully created a route");
+                Application::$app->session->setFlash('success', "succesfully added a new bus");
                 $response->redirect("/");
                 exit;
 
             }
         }
-        return $this->render("createroute", [
+        return $this->render("addbus", [
             'model' => $model
         ]);
     }
+
 }
 
 ?>
