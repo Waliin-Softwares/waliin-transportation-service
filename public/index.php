@@ -5,6 +5,7 @@
     use app\core\Application;
     use app\controllers\SiteController;
     use app\controllers\AuthController;
+    use app\controllers\TransportController;
 
     $app = new Application();
 
@@ -21,16 +22,16 @@
     $app->router->post("/profile", [AuthController::class, "profile"]);
     $app->router->get("/changepassword", [AuthController::class, "changePassword"]);
     $app->router->post("/changepassword", [AuthController::class, "changePassword"]);
-    $app->router->get("/addmanager", [AuthController::class, "addManager"]);
-    $app->router->post("/addmanager", [AuthController::class, "addManager"]);
-    $app->router->get("/addofficer", [AuthController::class, "addOfficer"]);
-    $app->router->post("/addofficer", [AuthController::class, "addOfficer"]);
-    $app->router->get("/addemployee", [AuthController::class, "addEmployee"]);
-    $app->router->post("/addemployee", [AuthController::class, "addEmployee"]);
-    $app->router->get("/addroute", [AuthController::class, "addRoute"]);
-    $app->router->post("/addroute", [AuthController::class, "addRoute"]);
-    $app->router->get("/addbus", [AuthController::class, "addBus"]);
-    $app->router->post("/addbus", [AuthController::class, "addBus"]);
+    $app->router->get("/addmanager", [TransportController::class, "addManager"]);
+    $app->router->post("/addmanager", [TransportController::class, "addManager"]);
+    $app->router->get("/addofficer", [TransportController::class, "addOfficer"]);
+    $app->router->post("/addofficer", [TransportController::class, "addOfficer"]);
+    $app->router->get("/addemployee", [TransportController::class, "addEmployee"]);
+    $app->router->post("/addemployee", [TransportController::class, "addEmployee"]);
+    $app->router->get("/addroute", [TransportController::class, "addRoute"]);
+    $app->router->post("/addroute", [TransportController::class, "addRoute"]);
+    $app->router->get("/addbus", [TransportController::class, "addBus"]);
+    $app->router->post("/addbus", [TransportController::class, "addBus"]);
     
 
     
