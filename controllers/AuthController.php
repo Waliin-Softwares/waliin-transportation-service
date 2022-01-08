@@ -103,7 +103,7 @@ class AuthController extends Controller{
         ]);
         
     }
-    public function addAdmin(Request $request, Response $response){
+    public function addManager(Request $request, Response $response){
         if(!Application::$app->isLoggedIn()){
             $response->redirect("/");
             exit;
@@ -116,15 +116,15 @@ class AuthController extends Controller{
         $this->setLayout("auth");
         if($request->isPost()){
             $user->loadData($request->getBody());
-            if($user->changeVals('role', 'admin')){
-                Application::$app->session->setFlash('success', "succesfully added to admins");
+            if($user->changeVals('role', 'manager')){
+                Application::$app->session->setFlash('success', "succesfully added to managers");
                 $response->redirect("/");
                 exit;
 
             }
             
         }
-        return $this->render("addadmin", [
+        return $this->render("addmanager", [
             'model' => $user
         ]);
 
@@ -135,7 +135,7 @@ class AuthController extends Controller{
             exit;
         }
         $user = Application::$app->user;
-        if(!$user->isAdmin()){
+        if(!$user->isManager()){
             $response->redirect("/");
             exit;
         }
@@ -185,7 +185,7 @@ class AuthController extends Controller{
             exit;
         }
         $user = Application::$app->user;
-        if(!$user->isAdmin()){
+        if(!$user->isManager()){
             $response->redirect("/");
             exit;
         }

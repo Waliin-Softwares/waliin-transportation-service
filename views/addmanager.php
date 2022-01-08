@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Add Admin</title>
+    <title>Add Manager</title>
 </head>
 
 <?php
@@ -26,11 +26,11 @@
 
 <body>
     <div class="container">
-        <h2> Add Admin </h2>
+        <h2> Add Manager </h2>
         <div class="jumbotron">
             <div class="row">
                 <div class="col">
-                    <?php $form = Form::begin('/addadmin', 'post'); ?>
+                    <?php $form = Form::begin('/addmanager', 'post'); ?>
                         <?php foreach($users as $user): ?>
                             <?php echo $form->field($model, 'other', 'checkbox', $user ) ?>
                         <?php endforeach; ?>

@@ -5,10 +5,10 @@
     <?php if($model->isSuper()): ?>
         <h2> Welcome <?= $model->getName() ?> </h2>
         <p> You are a super user </p>
-        <p> <a href="/addadmin"> Add admin </a> </p>
-    <?php elseif($model->isAdmin()): ?>
+        <p> <a href="/addmanager"> Add Manager </a> </p>
+    <?php elseif($model->isManager()): ?>
         <h2> Welcome <?= $model->getName() ?> </h2>
-        <p> You are an admin user </p>
+        <p> You are an Manager </p>
         <p> <a href=" /addofficer"> Add Officer </a> </p>
         <p> <a href=" /addbus"> Add Bus </a> </p>
     <?php elseif($model->isOfficer()): ?>

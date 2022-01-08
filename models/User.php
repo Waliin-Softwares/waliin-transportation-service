@@ -49,8 +49,8 @@ class User extends DbModel{
     public function getName(){
         return $this->firstName . " " . $this->lastName;
     }
-    public function isAdmin(){
-        return $this->role == "admin";
+    public function isManager(){
+        return $this->role == "manager";
     }
     public function isSuper(){
         return $this->role == "super";
