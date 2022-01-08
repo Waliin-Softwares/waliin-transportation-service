@@ -80,7 +80,11 @@ class User extends DbModel{
         }
         return true;
     }
+    public function changeValOfficer($id){
 
+        $this->updateOne(["role" => "officer"], ['id' => $id]);
+        return true;
+    }
     
 
 

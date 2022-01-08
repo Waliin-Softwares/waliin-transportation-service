@@ -9,6 +9,7 @@ use app\models\Route;
 use app\models\Bus;
 use app\models\Manager;
 use app\models\Office;
+use app\models\Officer;
 use app\core\Application;
 
 class TransportController extends Controller{
@@ -74,10 +75,12 @@ class TransportController extends Controller{
             $response->redirect("/");
             exit;
         }
+        $office = new Office();
+        $officer = new Officer();
         $this->setLayout("auth");
         if($request->isPost()){
-            $user->loadData($request->getBody());
-            if($user->changeVal('Manager', 'role', 'officer')){
+            $officer->loadData($request->getBody());
+            if($user->changeValOfficer($officer->userid) && $officer->save()){
                 Application::$app->session->setFlash('success', "succesfully added to officers");
                 $response->redirect("/");
                 exit;
@@ -85,7 +88,10 @@ class TransportController extends Controller{
             }
         }
         return $this->render("addofficer", [
-            'model' => $user
+            'model' => $user,
+            'office' => $office,
+            'officer' => $officer
+
         ]);
 
     }
