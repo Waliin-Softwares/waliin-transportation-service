@@ -25,7 +25,7 @@ class TransportController extends Controller{
         $this->setLayout("auth");
         if($request->isPost()){
             $user->loadData($request->getBody());
-            if($user->changeVals('role', 'manager')){
+            if($user->changeValManager('role', 'manager')){
                 Application::$app->session->setFlash('success', "succesfully added to managers");
                 $response->redirect("/");
                 exit;
@@ -77,7 +77,7 @@ class TransportController extends Controller{
         $this->setLayout("auth");
         if($request->isPost()){
             $user->loadData($request->getBody());
-            if($user->changeVals('role', 'officer')){
+            if($user->changeVal('Manager', 'role', 'officer')){
                 Application::$app->session->setFlash('success', "succesfully added to officers");
                 $response->redirect("/");
                 exit;

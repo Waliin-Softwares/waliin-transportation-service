@@ -4,7 +4,6 @@ namespace app\models;
 use app\core\DbModel;
 
 
-
 class User extends DbModel{
     public string $username="";
     public string $firstName="";
@@ -69,13 +68,14 @@ class User extends DbModel{
     public function isEmployee(){
         return $this->role == "employee";
     }
-    public function changeVals($key, $value){
+    public function changeValManager($key, $value){
+
         $set = [$key => $value];
         foreach($this->others as $id){
             $where = ['id' => $id];
-            $manager = new Manager();
-            $manager->set('userid', $id);
-            $manager->save();
+            $model = new Manager();
+            $model->set('userid', $id);
+            $model->save();
             $this->updateOne($set, $where);
         }
         return true;
