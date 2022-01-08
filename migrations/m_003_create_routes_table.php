@@ -5,7 +5,7 @@ class m_003_create_routes_table{
         
         public function up(){
             $db = Application::$app->db;
-            $SQL =  "CREATE TABLE `routes` (
+            $SQL =  "CREATE TABLE IF NOT EXISTS`routes`(
                 `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 `routename` varchar(255) NOT NULL,
                 `source` varchar(255) NOT NULL,

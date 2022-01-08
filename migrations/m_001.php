@@ -5,7 +5,7 @@ class m_001{
         
         public function up(){
             $db = Application::$app->db;
-            $SQL =  "CREATE TABLE `users` (
+            $SQL =  "CREATE TABLE IF NOT EXISTS `users`(
                 `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 `username` varchar(255) NOT NULL,
                 `email` varchar(255) NOT NULL,
