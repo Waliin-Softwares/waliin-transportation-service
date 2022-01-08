@@ -15,6 +15,7 @@ class User extends DbModel{
     public string $role="customer";
     public string $address="";
     public string $phoneNumber="";
+    public string $verified="no";
     public array $others=[];
 
 
@@ -48,7 +49,7 @@ class User extends DbModel{
         return "users";
     }
     public function attributes(){
-        return ['firstName', 'lastName', 'username', 'email', 'password', 'gender', 'role', 'address', 'phoneNumber'];
+        return ['firstName', 'lastName', 'username', 'email', 'password', 'gender', 'role', 'address', 'phoneNumber', 'verified'];
     }
     public function primaryKey(){
         return 'id';

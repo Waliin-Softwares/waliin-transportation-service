@@ -17,6 +17,7 @@ class m_003_create_users_table{
                 `gender` char(1),
                 `role` varchar(255) NOT NULL,
                 `address` int(11) NOT NULL,
+                `verified` varchar(3) NOT NULL,
                 `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 FOREIGN KEY(address) REFERENCES address(id)
