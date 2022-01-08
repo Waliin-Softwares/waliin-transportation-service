@@ -10,6 +10,7 @@ use app\models\Bus;
 use app\models\Manager;
 use app\models\Office;
 use app\models\Officer;
+use app\models\Employee;
 use app\core\Application;
 
 class TransportController extends Controller{
@@ -105,10 +106,12 @@ class TransportController extends Controller{
             $response->redirect("/");
             exit;
         }
+        $office = new Office();
+        $employee = new Employee();
         $this->setLayout("auth");
         if($request->isPost()){
-            $user->loadData($request->getBody());
-            if($user->changeVals('role', 'employee')){
+            $employee->loadData($request->getBody());
+            if($user->changeValEmployee($employee->userid) && $employee->save()){
                 Application::$app->session->setFlash('success', "succesfully added to employees");
                 $response->redirect("/");
                 exit;
@@ -116,7 +119,9 @@ class TransportController extends Controller{
             }
         }
         return $this->render("addemployee", [
-            'model' => $user
+            'model' => $user,
+            'office' => $office,
+            'employee' => $employee
         ]);
 
     }

@@ -18,9 +18,17 @@
 
     $users = $model->findAll(['role' => 'customer']);
     $users = array_values($users);
-    $users = array_map(function($user){
-        return [$user->id, $user->getName()]; 
-    }, $users);
+    $users_array = [];
+    foreach($users as $user){
+        $users_array[$user->id] = $user->getName();
+    }
+
+    $offices = $office->findAll([]);
+    $offices = array_values($offices);
+    $offices_array = [];
+    foreach($offices as $off){
+        $offices_array[$off->id] = $off->officeName;
+    }
 
 ?>
 
@@ -31,10 +39,9 @@
             <div class="row">
                 <div class="col">
                     <?php $form = Form::begin('/addemployee', 'post'); ?>
-                        <?php foreach($users as $user): ?>
-                            <?php echo $form->field($model, 'other', 'checkbox', $user ) ?>
-                        <?php endforeach; ?>
-                    <button type="submit" class="btn btn-primary">Add Selected</button>
+                        <?php echo $form->field($employee, 'userid', 'select', $users_array ) ?>
+                        <?php echo $form->field($employee, 'office', 'select', $offices_array ) ?>
+                    <button type="submit" class="btn btn-primary">Add</button>
                     <?php Form::end(); ?>
                 </div>
             </div>
