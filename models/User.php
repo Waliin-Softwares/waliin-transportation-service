@@ -73,6 +73,9 @@ class User extends DbModel{
         $set = [$key => $value];
         foreach($this->others as $id){
             $where = ['id' => $id];
+            $manager = new Manager();
+            $manager->set('userid', $id);
+            $manager->save();
             $this->updateOne($set, $where);
         }
         return true;

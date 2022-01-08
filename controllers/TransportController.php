@@ -17,8 +17,6 @@ class TransportController extends Controller{
             exit;
         }
         $user = Application::$app->user;
-        $bus = new Bus();
-        $manager = new Manager();
         if(!$user->isSuper()){
             $response->redirect("/");
             exit;
@@ -26,7 +24,7 @@ class TransportController extends Controller{
         $this->setLayout("auth");
         if($request->isPost()){
             $user->loadData($request->getBody());
-            if($user->changeVals('role', 'manager') && $manager->add()){
+            if($user->changeVals('role', 'manager')){
                 Application::$app->session->setFlash('success', "succesfully added to managers");
                 $response->redirect("/");
                 exit;
