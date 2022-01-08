@@ -16,7 +16,6 @@
                         <?php echo $form->field($model, 'username') ?>
                         <?php echo $form->field($model, 'email') ?>
                          <?php echo $form->field($model, 'phoneNumber')?>
-                         <?php echo $form->field($model, 'address') ?>
                      <button type="submit" class="btn btn-primary">Update</button>
                      <?php Form::end(); ?>
                  </div>

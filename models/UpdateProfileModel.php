@@ -11,7 +11,6 @@ class UpdateProfileModel extends DbModel{
     public string $firstName="";
     public string $lastName="";
     public string $email="";
-    public string $address="";
     public string $phoneNumber="";
 
     public function __construct(){
@@ -30,7 +29,6 @@ class UpdateProfileModel extends DbModel{
             'firstName' => [self::RULE_REQUIRED, self::RULE_ALPHA],
             'lastName' => [self::RULE_REQUIRED, self::RULE_ALPHA],
             'username' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 4], self::RULE_NUNIQUE],
-            'address' => [self::RULE_REQUIRED],
             'phoneNumber' => [self::RULE_REQUIRED, self::RULE_PHONENUM],
 
         ];
