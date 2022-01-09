@@ -30,7 +30,7 @@ class Jounrney extends DbModel{
         ];
     }
     public function tableName(){
-        return "journeys";
+        return "jounrneys";
     }
     public function attributes(){
         return ['route', 'bus', 'seatAvailable', 'date', 'time'];

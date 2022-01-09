@@ -195,7 +195,7 @@ class TransportController extends Controller{
             $model->loadData($request->getBody());
             var_dump($model);
             if($model->validate() && $model->add()){
-                Application::$app->session->setFlash('success', "succesfully created a journey");
+                Application::$app->session->setFlash('success', "succesfully created a jounrney");
                 $response->redirect("/");
                 exit;
 
