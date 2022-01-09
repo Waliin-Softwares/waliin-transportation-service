@@ -34,6 +34,8 @@
     $app->router->post("/addroute", [TransportController::class, "addRoute"]);
     $app->router->get("/addbus", [TransportController::class, "addBus"]);
     $app->router->post("/addbus", [TransportController::class, "addBus"]);
+    $app->router->get("/addjounrney", [TransportController::class, "addJounrney"]);
+    $app->router->post("/addjounrney", [TransportController::class, "addJounrney"]);
     
 
     

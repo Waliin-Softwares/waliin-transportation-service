@@ -11,6 +11,7 @@ use app\models\Manager;
 use app\models\Office;
 use app\models\Officer;
 use app\models\Employee;
+use app\models\Jounrney;
 use app\core\Application;
 
 class TransportController extends Controller{
@@ -173,6 +174,37 @@ class TransportController extends Controller{
         }
         return $this->render("createroute", [
             'model' => $model
+        ]);
+    }
+    public function addJounrney(Request $request, Response $response){
+        if(!Application::$app->isLoggedIn()){
+            $response->redirect("/");
+            exit;
+        }
+        $user = Application::$app->user;
+        if(!$user->isEmployee()){
+            $response->redirect("/");
+            exit;
+        }
+        $this->setLayout("auth");
+        $model = new Jounrney();
+        $bus = new Bus();
+        $route = new Route();
+
+        if($request->isPost()){
+            $model->loadData($request->getBody());
+            var_dump($model);
+            if($model->validate() && $model->add()){
+                Application::$app->session->setFlash('success', "succesfully created a journey");
+                $response->redirect("/");
+                exit;
+
+            }
+        }
+        return $this->render("createjounrney", [
+            'model' => $model,
+            'bus' => $bus,
+            'route' => $route
         ]);
     }
 }

@@ -16,9 +16,10 @@
         <h2> Welcome <?= $model->getName() ?> </h2>
         <p> You are an officer user </p>
         <p> <a href=" /addemployee"> Add Employee </a> </p>
-        <p> <a href=" /addroute"> Create route </a> </p>
+        <p> <a href=" /addroute"> Create Route </a> </p>
     <?php elseif($model->isEmployee()): ?>
         <h2> Welcome <?= $model->getName() ?> </h2>
+        <p> <a href=" /addjounrney"> Create Journey </a> </p>
         <p> You are an employee user </p>
     <?php else: ?>
         <h2> Welcome <?= $model->getName() ?> </h2>
