@@ -88,7 +88,7 @@ class User extends DbModel{
     }
     public function changeValEmployee($id){
 
-        $this->updateOne(["role" => "emplloyee"], ['id' => $id]);
+        $this->updateOne(["role" => "employee"], ['id' => $id]);
         return true;
     }
 
