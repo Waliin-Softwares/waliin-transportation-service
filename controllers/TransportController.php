@@ -12,6 +12,7 @@ use app\models\Office;
 use app\models\Officer;
 use app\models\Employee;
 use app\models\Jounrney;
+use app\models\Ticket;
 use app\core\Application;
 
 class TransportController extends Controller{
@@ -204,6 +205,34 @@ class TransportController extends Controller{
         return $this->render("createjounrney", [
             'model' => $model,
             'bus' => $bus,
+            'route' => $route
+        ]);
+    }
+    public function reserveTicket(Request $request, Response $response){
+        if(!Application::$app->isLoggedIn()){
+            $response->redirect("/");
+            exit;
+        }
+        $user = Application::$app->user;
+        if($user->isManager() || $user->isEmployee()){
+            $response->redirect("/");
+            exit;
+        }
+        $this->setLayout("auth");
+        $model = new Ticket();
+        $route = new Route();
+        $user = Application::$app->user;
+        $model->loadData($request->getBody());
+        if($request->isPost()){
+            if($model->validate() && $model->add()){
+                Application::$app->session->setFlash('success', "succesfully reserved a ticket");
+                $response->redirect("/");
+                exit;
+
+            }
+        }
+        return $this->render("reserveticket", [
+            'model' => $model,
             'route' => $route
         ]);
     }

@@ -13,6 +13,7 @@ abstract class Model{
     public const RULE_PHONENUM = 'phonenum';
     public const RULE_NUNIQUE = 'nunique';
     public const RULE_DBMATCH = 'dbmatch';
+    public const RULE_DATE = 'date';
     public array $errors = [];
 
     abstract public function rules();
@@ -64,6 +65,9 @@ abstract class Model{
                 if($ruleName === self::RULE_DBMATCH && $value != $this->{$rule["match"]} && !password_verify($value, $this->{$rule["match"]})){
                     $this->addErrorForRule($attribute, $ruleName, $rule);
                 }
+                if($ruleName === self::RULE_DATE && $value < date("Y-m-d")){
+                    $this->addErrorForRule($attribute, $ruleName);
+                }
             }
         }
         return empty($this->errors);
@@ -92,7 +96,8 @@ abstract class Model{
             self::RULE_UNIQUE => 'This field must be unique',
             self::RULE_ALPHA => 'This feild must be an alphabet',
             self::RULE_PHONENUM => 'Incorrect phone number format',
-            self::RULE_DBMATCH => 'This field must be similar to your {match}' 
+            self::RULE_DBMATCH => 'This field must be similar to your {match}',
+            self::RULE_DATE => 'This field must be a valid date',
         ];
     }
     public function getError($attribute){

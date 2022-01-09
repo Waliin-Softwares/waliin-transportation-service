@@ -22,6 +22,7 @@
     $app->router->post("/profile", [AuthController::class, "profile"]);
     $app->router->get("/changepassword", [AuthController::class, "changePassword"]);
     $app->router->post("/changepassword", [AuthController::class, "changePassword"]);
+    
     $app->router->get("/addmanager", [TransportController::class, "addManager"]);
     $app->router->post("/addmanager", [TransportController::class, "addManager"]);
     $app->router->get("/addoffice", [TransportController::class, "addOffice"]);
@@ -36,6 +37,8 @@
     $app->router->post("/addbus", [TransportController::class, "addBus"]);
     $app->router->get("/addjounrney", [TransportController::class, "addJounrney"]);
     $app->router->post("/addjounrney", [TransportController::class, "addJounrney"]);
+    $app->router->get("/reserveticket", [TransportController::class, "reserveTicket"]);
+    $app->router->post("/reserveticket", [TransportController::class, "reserveTicket"]);
     
 
     

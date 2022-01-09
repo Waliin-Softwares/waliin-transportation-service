@@ -24,7 +24,7 @@
     <?php else: ?>
         <h2> Welcome <?= $model->getName() ?> </h2>
         <p> You are a regular user </p>
-
+        <p> <a href=" /reserveticket"> Reserve Ticket </a> </p>
     <?php endif; ?>
 
 
