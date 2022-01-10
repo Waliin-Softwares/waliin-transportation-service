@@ -13,7 +13,9 @@
     ],
 
 
-    "require": {}
+    "require": {
+        "twilio/sdk": "^6.32"
+    }
 
     
 }
