@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace app\core;
 
 abstract class DbModel extends Model{
@@ -10,14 +10,14 @@ abstract class DbModel extends Model{
         $attributes = $this->attributes();
         $statement = self::prepare("INSERT INTO $tableName (".implode(',', $attributes).
         ") VALUES (:".implode(',:', $attributes).")");
-        
+
         foreach($attributes as $attribute){
             $statement->bindValue(":$attribute", $this->{$attribute});
         }
-        
+
         $statement->execute();
         return true;
-        
+
     }
     public static function prepare($sql){
         return Application::$app->db->pdo->prepare($sql);
@@ -32,7 +32,6 @@ abstract class DbModel extends Model{
         foreach($where as $key => $item){
             $statement->bindValue(":$key", $item);
         }
-        var_dump($statement);
         $statement->execute();
         return $statement->fetchObject(static::class);
     }
@@ -95,7 +94,7 @@ abstract class DbModel extends Model{
         }
         $statement->execute();
         return true;
-        
+
     }
     public function getOne($vals, $where){
         $tableName = $this->tableName();
@@ -109,9 +108,9 @@ abstract class DbModel extends Model{
             $statement->bindValue(":$key", $item);
         }
         $statement->execute();
-        return $statement->fetch();        
+        return $statement->fetch();
     }
-    
+
 }
 
 ?>

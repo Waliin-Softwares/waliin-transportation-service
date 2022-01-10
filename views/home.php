@@ -20,6 +20,7 @@
     <?php elseif($model->isEmployee()): ?>
         <h2> Welcome <?= $model->getName() ?> </h2>
         <p> <a href=" /addjounrney"> Create Journey </a> </p>
+        <p> <a href=" /reserveticket"> Reserve Ticket </a> </p>
         <p> You are an employee user </p>
     <?php else: ?>
         <h2> Welcome <?= $model->getName() ?> </h2>
