@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace app\controllers;
 
@@ -37,7 +37,7 @@ class AuthController extends Controller{
         }
         $this->setLayout("auth");
         $registerModel = new User();
-        
+
         if($request->isPost()){
             $registerModel->loadData($request->getBody());
             if($registerModel->validate() && $registerModel->register()){
@@ -51,8 +51,8 @@ class AuthController extends Controller{
                 ]);
             }
         }
-        
-        
+
+
         return $this->render("register", [
             'model' => $registerModel
         ]);
@@ -79,7 +79,7 @@ class AuthController extends Controller{
             'model' => $model,
             'user' => Application::$app->user
         ]);
-        
+
     }
     public function changePassword(Request $request, Response $response){
         if(!Application::$app->isLoggedIn()){
@@ -99,9 +99,9 @@ class AuthController extends Controller{
             'model' => $model,
             'user' => Application::$app->user
         ]);
-        
+
     }
-    
+
 }
 
 ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace app\controllers;
 
@@ -35,7 +35,7 @@ class TransportController extends Controller{
                 exit;
 
             }
-            
+
         }
         return $this->render("addmanager", [
             'model' => $user,
@@ -214,7 +214,7 @@ class TransportController extends Controller{
             exit;
         }
         $user = Application::$app->user;
-        if($user->isManager() || $user->isEmployee()){
+        if($user->isManager() || $user->isOfficer()){
             $response->redirect("/");
             exit;
         }
