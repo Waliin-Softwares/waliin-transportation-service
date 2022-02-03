@@ -47,7 +47,7 @@
   </style>
 </head>
 
-<body style="background-color:white">
+<body style="background-color:white" background-image:url("/assets/img/background.png")>
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
