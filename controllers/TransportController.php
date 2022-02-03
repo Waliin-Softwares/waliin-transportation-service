@@ -26,7 +26,7 @@ class TransportController extends Controller{
             $response->redirect("/");
             exit;
         }
-        $this->setLayout("auth");
+        // $this->setLayout("auth");
         if($request->isPost()){
             $user->loadData($request->getBody());
             if($user->changeValManager('role', 'manager')){
@@ -53,7 +53,7 @@ class TransportController extends Controller{
             $response->redirect("/");
             exit;
         }
-        $this->setLayout("auth");
+        // $this->setLayout("auth");
         $model = new Office();
         if($request->isPost()){
             $model->loadData($request->getBody());
@@ -80,7 +80,7 @@ class TransportController extends Controller{
         }
         $office = new Office();
         $officer = new Officer();
-        $this->setLayout("auth");
+        // $this->setLayout("auth");
         if($request->isPost()){
             $officer->loadData($request->getBody());
             if($user->changeValOfficer($officer->userid) && $officer->save()){
@@ -110,7 +110,7 @@ class TransportController extends Controller{
         }
         $office = new Office();
         $employee = new Employee();
-        $this->setLayout("auth");
+        // $this->setLayout("auth");
         if($request->isPost()){
             $employee->loadData($request->getBody());
             if($user->changeValEmployee($employee->userid) && $employee->save()){
@@ -137,7 +137,7 @@ class TransportController extends Controller{
             $response->redirect("/");
             exit;
         }
-        $this->setLayout("auth");
+        // $this->setLayout("auth");
         $model = new Bus();
         if($request->isPost()){
             $model->loadData($request->getBody());
@@ -162,7 +162,7 @@ class TransportController extends Controller{
             $response->redirect("/");
             exit;
         }
-        $this->setLayout("auth");
+        // $this->setLayout("auth");
         $model = new Route();
         if($request->isPost()){
             $model->loadData($request->getBody());
@@ -187,7 +187,7 @@ class TransportController extends Controller{
             $response->redirect("/");
             exit;
         }
-        $this->setLayout("auth");
+        // $this->setLayout("auth");
         $model = new Jounrney();
         $bus = new Bus();
         $route = new Route();
@@ -218,7 +218,7 @@ class TransportController extends Controller{
             $response->redirect("/");
             exit;
         }
-        $this->setLayout("auth");
+        // $this->setLayout("auth");
         $model = new Ticket();
         $route = new Route();
         $user = Application::$app->user;
