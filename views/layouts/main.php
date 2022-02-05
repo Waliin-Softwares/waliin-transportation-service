@@ -47,7 +47,7 @@
   </style>
 </head>
 
-<body style="background-color:white" background-image:url("/assets/img/background.png")>
+<body style="background-image:url('static/background.jpg'); background-size:cover; background-repeat:no-repeat;">
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -88,7 +88,6 @@
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Hosting</a></li>
                 </ul>
                 <p class="text-muted">Copyright &copy; 2022 Waliin Transportation Service</p>
             </div>
