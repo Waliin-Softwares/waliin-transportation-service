@@ -5,7 +5,7 @@ Ethiopia.
 
 Since the platform is based on the latest DBMS systems, the company can get the benefits like getting real-time data of customers and managing their routes from the platform.
 ### Waliin transportation service platform has the following functionalities for customers and transport providers
-customers can:-
+#### customers can:-
   - must register with phone number for persistent data
   - verified according to their phone number
   - can login and logout at any time
@@ -18,14 +18,18 @@ customers can:-
   - pay for a ticket, using online payment systems
   - can change language
   
-transport providers can
-  ● administrators can login and logout
-  ● an administrator should add ticker and route officers
-  ● an administrator can deactivate ticket and route officers and employees
-  ● officers can login and logout
-  ● officers should add their employee
-  ● An employee can login and logout
-  ● route employee can create a route
-  ● ticket employee can reserve ticket using the platform
-  ● generate customers detail list
-  ● view graphical data of customers.
+#### transport providers can
+  - administrators can login and logout
+  - an administrator should add ticker and route officers
+  - an administrator can deactivate ticket and route officers and employees
+  - officers can login and logout
+  - officers should add their employee
+  - An employee can login and logout
+  - route employee can create a route
+  - ticket employee can reserve ticket using the platform
+  - generate customers detail list
+  - view graphical data of customers.
+
+### Use case diagram
+![image](https://user-images.githubusercontent.com/61843471/175818008-9d42770f-05e9-40b1-995b-1c7e3f81fc4d.png)
+
